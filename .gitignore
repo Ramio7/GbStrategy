@@ -61,3 +61,13 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+GbStrategy/Library/
+
+GbStrategy/Logs/
+
+GbStrategy/obj/
+
+GbStrategy/UserSettings/
+
+GbStrategy/.vsconfig
