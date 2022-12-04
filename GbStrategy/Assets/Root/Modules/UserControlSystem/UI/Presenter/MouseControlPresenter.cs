@@ -12,15 +12,18 @@ public class MouseControlPresenter : MonoBehaviour
         {
             return;
         }
+
         var hits = Physics.RaycastAll(_camera.ScreenPointToRay(Input.mousePosition));
         if (hits.Length == 0)
         {
             return;
         }
+
         var selectable = hits
         .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
         .FirstOrDefault(c => c != null);
         _selectedObject.SetValue(selectable);
-    }
 
+        if (_selectedObject.CurrentValue != null) _selectedObject.CurrentValue.HighlighterScript.enabled = true;
+    }
 }

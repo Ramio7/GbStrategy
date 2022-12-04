@@ -15,4 +15,3 @@ public class SelectableValue : ScriptableObject
         OnSelected?.Invoke(value);
     }
 }
-

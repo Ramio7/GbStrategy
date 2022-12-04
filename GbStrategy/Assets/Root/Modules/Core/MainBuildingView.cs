@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class MainBuilding : MonoBehaviour, ISelectable, IUnitFactory
+public class MainBuildingView : MonoBehaviour, ISelectable, IUnitFactory
 {
     [SerializeField] private GameObject _unitPrefab;
     [SerializeField] private Transform _unitsParent;
-
-    public bool IsSelected { get => _selected; set => _selected = value; }
 
     public float Health => _health;
 
@@ -13,11 +11,12 @@ public class MainBuilding : MonoBehaviour, ISelectable, IUnitFactory
 
     public Sprite Icon => _icon;
 
-    private float _health;
-    private bool _selected;
-    
+    public MonoBehaviour HighlighterScript { get => _highlighterScript; }
+
     [SerializeField] private float _maxHealth;
+    [SerializeField] private float _health;
     [SerializeField] private Sprite _icon;
+    [SerializeField] private MonoBehaviour _highlighterScript;
 
     public void ProduceUnit()
     {
