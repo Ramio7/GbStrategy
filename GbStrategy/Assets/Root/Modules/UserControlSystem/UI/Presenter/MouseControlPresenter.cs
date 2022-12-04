@@ -22,6 +22,9 @@ public class MouseControlPresenter : MonoBehaviour
         var selectable = hits
         .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
         .FirstOrDefault(c => c != null);
+
+        if (selectable == null && _selectedObject.CurrentValue != null) _selectedObject.CurrentValue.HighlighterScript.enabled = false;
+
         _selectedObject.SetValue(selectable);
 
         if (_selectedObject.CurrentValue != null) _selectedObject.CurrentValue.HighlighterScript.enabled = true;
