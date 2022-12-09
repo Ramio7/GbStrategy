@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class MainBuildingView : MonoBehaviour, ISelectable, IUnitFactory
+public class MainBuildingView : CommandExecutorBase<IProduceUnitCommand>, ISelectable
 {
-    [SerializeField] private GameObject _unitPrefab;
     [SerializeField] private Transform _unitsParent;
 
     public float Health => _health;
@@ -18,10 +17,9 @@ public class MainBuildingView : MonoBehaviour, ISelectable, IUnitFactory
     [SerializeField] private Sprite _icon;
     [SerializeField] private MonoBehaviour _highlighterScript;
 
-    public void ProduceUnit()
+    public override void ExecuteSpecificCommand<IProduceUnitCommand>(IProduceUnitCommand command)
     {
-        Instantiate(_unitPrefab, new Vector3(Random.Range(-10, 10), 0,
-        Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+        var unitPrefabProperty = command.GetType().GetProperty("UnitPrefab");
+        //Instantiate(command.GetType().GetProperty(nameof(unitPrefabProperty)).GetValue(unitPrefabProperty), new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
     }
-
 }
