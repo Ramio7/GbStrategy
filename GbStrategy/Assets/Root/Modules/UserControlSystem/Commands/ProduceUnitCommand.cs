@@ -1,7 +1,12 @@
+using Abstractions.Assets.Root.Modules.Abstractions;
+using Assets.Root.Modules.Utils;
 using UnityEngine;
 
-public class ProduceUnitCommand : IProduceUnitCommand
+namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public GameObject UnitPrefab => _unitPrefab;
-    [SerializeField] private GameObject _unitPrefab;
+    public class ProduceUnitCommand : IProduceUnitCommand
+    {
+        public GameObject UnitPrefab => _unitPrefab;
+        [InjectAsset("Chomper")] private GameObject _unitPrefab;
+    }
 }

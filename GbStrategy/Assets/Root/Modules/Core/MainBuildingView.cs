@@ -1,25 +1,29 @@
+using Abstractions.Assets.Root.Modules.Abstractions;
 using UnityEngine;
 
-public class MainBuildingView : CommandExecutorBase<IProduceUnitCommand>, ISelectable
+namespace Assets.Root.Modules.Core
 {
-    [SerializeField] private Transform _unitsParent;
-
-    public float Health => _health;
-
-    public float MaxHealth => _maxHealth;
-
-    public Sprite Icon => _icon;
-
-    public MonoBehaviour HighlighterScript { get => _highlighterScript; }
-
-    [SerializeField] private float _maxHealth;
-    [SerializeField] private float _health;
-    [SerializeField] private Sprite _icon;
-    [SerializeField] private MonoBehaviour _highlighterScript;
-
-    public override void ExecuteSpecificCommand<IProduceUnitCommand>(IProduceUnitCommand command)
+    public class MainBuildingView : CommandExecutorBase<IProduceUnitCommand>, ISelectable
     {
-        var unitPrefabProperty = command.GetType().GetProperty("UnitPrefab");
-        //Instantiate(command.GetType().GetProperty(nameof(unitPrefabProperty)).GetValue(unitPrefabProperty), new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+        [SerializeField] private Transform _unitsParent;
+
+        public float Health => _health;
+
+        public float MaxHealth => _maxHealth;
+
+        public Sprite Icon => _icon;
+
+        public MonoBehaviour HighlighterScript { get => _highlighterScript; }
+
+        [SerializeField] private float _maxHealth;
+        [SerializeField] private float _health;
+        [SerializeField] private Sprite _icon;
+        [SerializeField] private MonoBehaviour _highlighterScript;
+
+        public override void ExecuteSpecificCommand(IProduceUnitCommand command)
+        {
+            Instantiate(command.UnitPrefab, new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10), transform.position.y, 
+                Random.Range(transform.position.z  - 10, transform.position.z + 10)), Quaternion.identity, _unitsParent);
+        }
     }
 }

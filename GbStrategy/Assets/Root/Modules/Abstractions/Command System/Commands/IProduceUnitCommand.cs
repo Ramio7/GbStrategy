@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IProduceUnitCommand: ICommand
+namespace Abstractions.Assets.Root.Modules.Abstractions
 {
-    GameObject UnitPrefab { get; }
+    public interface IProduceUnitCommand : ICommand
+    {
+        GameObject UnitPrefab { get; }
+    }
 }

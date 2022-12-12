@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public interface ISelectable
+namespace Abstractions.Assets.Root.Modules.Abstractions
 {
-    float Health { get; }
+    public interface ISelectable
+    {
+        float Health { get; }
 
-    float MaxHealth { get; }
+        float MaxHealth { get; }
 
-    Sprite Icon { get; }
+        Sprite Icon { get; }
 
-    MonoBehaviour HighlighterScript { get; }
+        MonoBehaviour HighlighterScript { get; }
+    }
 }

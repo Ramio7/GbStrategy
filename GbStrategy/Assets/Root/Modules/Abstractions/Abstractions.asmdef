@@ -1,6 +1,6 @@
 {
     "name": "Abstractions",
-    "rootNamespace": "",
+    "rootNamespace": "Abstractions",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
