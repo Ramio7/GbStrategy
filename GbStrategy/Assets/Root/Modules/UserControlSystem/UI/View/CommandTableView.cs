@@ -24,7 +24,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
         {
             _buttonsByExecutorType = new Dictionary<Type, GameObject>
         {
-            { typeof(CommandExecutorBase<IAttackCommand>), _attackButton },
+            { typeof(CommandExecutorBase<ICommand>), _attackButton },
             { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
             { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
             { typeof(CommandExecutorBase<IStopCommand>), _stopButton },

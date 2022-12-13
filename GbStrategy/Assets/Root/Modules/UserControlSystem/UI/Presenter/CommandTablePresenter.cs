@@ -48,6 +48,47 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
                 unitProducer.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommand()));
                 return;
             }
+
+            var objectMover = commandExecutor as
+            CommandExecutorBase<IMoveCommand>; 
+            if (objectMover != null)
+            {
+                objectMover.ExecuteSpecificCommand(_context.Inject(new MoveCommand()));
+                return;
+            }
+
+            var objectStoper = commandExecutor as
+            CommandExecutorBase<IStopCommand>; 
+            if (objectStoper != null)
+            {
+                objectStoper.ExecuteSpecificCommand(_context.Inject(new StopCommand()));
+                return;
+            }
+
+            var objectHolder = commandExecutor as
+            CommandExecutorBase<IHoldCommand>; 
+            if (objectHolder != null)
+            {
+                objectHolder.ExecuteSpecificCommand(_context.Inject(new HoldCommand()));
+                return;
+            }
+
+            var objectPatroller = commandExecutor as
+            CommandExecutorBase<IPatrolCommand>; 
+            if (objectPatroller != null)
+            {
+                objectPatroller.ExecuteSpecificCommand(_context.Inject(new PatrolCommand()));
+                return;
+            }
+
+            var objectAttacker = commandExecutor as
+            CommandExecutorBase<ICommand>;
+            if (objectAttacker != null)
+            {
+                objectAttacker.ExecuteSpecificCommand(_context.Inject(new AttackCommand()));
+                return;
+            }
+
             throw new
             ApplicationException($"{nameof(CommandTablePresenter)}.{nameof(OnButtonClick)}: Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
         }
