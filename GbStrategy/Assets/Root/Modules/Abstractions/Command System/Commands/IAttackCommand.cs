@@ -1,4 +1,7 @@
-public interface IAttackCommand: ICommand
+namespace Abstractions.Assets.Root.Modules.Abstractions
 {
-    
+    public interface IAttackCommand : ICommand
+    {
+
+    }
 }

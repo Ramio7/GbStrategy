@@ -1,4 +1,6 @@
-public interface IPatrolCommand: ICommand
+namespace Abstractions.Assets.Root.Modules.Abstractions
 {
-    
+    public interface IPatrolCommand : ICommand
+    {
+    }
 }
