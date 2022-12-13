@@ -77,12 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2227813e3248c243b3bc0efc0bdb78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitPrefab: {fileID: 550902865850418010, guid: dbeaf28f79ea7b74aadfe8ca7a009c52,
-    type: 3}
   _unitsParent: {fileID: 0}
   _maxHealth: 1000
   _health: 500
   _icon: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
+  _highlighterScript: {fileID: 8605160891610601804}
 --- !u!64 &6219993800006704632
 MeshCollider:
   m_ObjectHideFlags: 0
