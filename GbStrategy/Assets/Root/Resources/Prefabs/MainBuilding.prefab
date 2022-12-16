@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3606816606921793394}
   - component: {fileID: 9006291108563486217}
   - component: {fileID: 2456157838009927443}
+  - component: {fileID: 3723524138323997622}
   - component: {fileID: 6219993800006704632}
   - component: {fileID: 8605160891610601804}
   m_Layer: 0
@@ -77,11 +78,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2227813e3248c243b3bc0efc0bdb78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitsParent: {fileID: 0}
   _maxHealth: 1000
   _health: 500
   _icon: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
   _highlighterScript: {fileID: 8605160891610601804}
+--- !u!114 &3723524138323997622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006291108545089161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04b1f799922fe44abe92a32fd90178f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitsContainer: {fileID: 0}
 --- !u!64 &6219993800006704632
 MeshCollider:
   m_ObjectHideFlags: 0

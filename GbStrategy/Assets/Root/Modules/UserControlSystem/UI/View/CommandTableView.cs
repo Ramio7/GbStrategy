@@ -3,6 +3,7 @@ using Assets.Root.Modules.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
     public class CommandTableView : MonoBehaviour
     {
         public Action<ICommandExecutor> OnClick;
+
         [SerializeField] private GameObject _attackButton;
         [SerializeField] private GameObject _moveButton;
         [SerializeField] private GameObject _patrolButton;
@@ -23,29 +25,25 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
         private void Start()
         {
             _buttonsByExecutorType = new Dictionary<Type, GameObject>
-        {
-            { typeof(CommandExecutorBase<ICommand>), _attackButton },
-            { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
-            { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
-            { typeof(CommandExecutorBase<IStopCommand>), _stopButton },
             {
-                typeof(CommandExecutorBase<IProduceUnitCommand>),
-                _produceUnitButton
-            },
-            { typeof(CommandExecutorBase<IHoldCommand>), _holdButton },
-        };
+                { typeof(CommandExecutorBase<IAttackCommand>), _attackButton },
+                { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
+                { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
+                { typeof(CommandExecutorBase<IStopCommand>), _stopButton },
+                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton },
+                { typeof(CommandExecutorBase<IHoldCommand>), _holdButton },
+            };
         }
-        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)
+        public void MakeLayout(List<ICommandExecutor> commandExecutors)
         {
-            foreach (var currentExecutor in commandExecutors)
+            for (int i =0; i < commandExecutors.Count; i++)
             {
+                var currentExecutor = commandExecutors[i];
                 var buttonGameObject = _buttonsByExecutorType
-                .Where(type => type
-                .Key
-                .IsAssignableFrom(currentExecutor.GetType())
-                )
-                .First()
-                .Value;
+                    .First(type => type
+                        .Key
+                        .IsInstanceOfType(currentExecutor.GetType()))
+                    .Value;
                 buttonGameObject.SetActive(true);
                 var button = buttonGameObject.GetComponent<Button>();
                 button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));

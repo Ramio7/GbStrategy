@@ -82,7 +82,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
             }
 
             var objectAttacker = commandExecutor as
-            CommandExecutorBase<ICommand>;
+            CommandExecutorBase<IAttackCommand>;
             if (objectAttacker != null)
             {
                 objectAttacker.ExecuteSpecificCommand(_context.Inject(new AttackCommand()));
