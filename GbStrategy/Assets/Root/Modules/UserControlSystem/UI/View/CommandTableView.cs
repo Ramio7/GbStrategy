@@ -30,33 +30,59 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
                 { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
                 { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
                 { typeof(CommandExecutorBase<IStopCommand>), _stopButton },
-                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton },
-                { typeof(CommandExecutorBase<IHoldCommand>), _holdButton },
+                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton }
             };
         }
-        public void MakeLayout(List<ICommandExecutor> commandExecutors)
+
+        public void BlockInteractions(ICommandExecutor ce)
         {
-            for (int i =0; i < commandExecutors.Count; i++)
+            UnblockAllInteractions();
+            GetButtonGameObjectByType(ce.GetType())
+            .GetComponent<Selectable>().interactable = false;
+        }
+
+        public void UnblockAllInteractions() => setInteractible(true);
+
+        private void setInteractible(bool value)
+        {
+            _attackButton.GetComponent<Selectable>().interactable = value;
+            _moveButton.GetComponent<Selectable>().interactable = value;
+            _patrolButton.GetComponent<Selectable>().interactable = value;
+            _stopButton.GetComponent<Selectable>().interactable = value;
+            _produceUnitButton.GetComponent<Selectable>().interactable =
+            value;
+        }
+
+        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)
+        {
+            foreach (var currentExecutor in commandExecutors)
             {
-                var currentExecutor = commandExecutors[i];
-                var buttonGameObject = _buttonsByExecutorType
-                    .First(type => type
-                        .Key
-                        .IsInstanceOfType(currentExecutor.GetType()))
-                    .Value;
+                var buttonGameObject =
+                GetButtonGameObjectByType(currentExecutor.GetType());
                 buttonGameObject.SetActive(true);
                 var button = buttonGameObject.GetComponent<Button>();
-                button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));
+                button.onClick.AddListener(() =>
+                OnClick?.Invoke(currentExecutor));
             }
         }
+
+        private GameObject GetButtonGameObjectByType(Type executorInstanceType)
+        {
+            return _buttonsByExecutorType
+            .Where(type =>
+            type.Key.IsAssignableFrom(executorInstanceType))
+            .First()
+            .Value;
+        }
+
         public void Clear()
         {
             foreach (var kvp in _buttonsByExecutorType)
             {
-                kvp.Value.GetComponent<Button>().onClick.RemoveAllListeners();
+                kvp.Value
+                .GetComponent<Button>().onClick.RemoveAllListeners();
                 kvp.Value.SetActive(false);
             }
         }
-
     }
 }

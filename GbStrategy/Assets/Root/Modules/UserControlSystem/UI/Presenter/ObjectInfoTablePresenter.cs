@@ -15,7 +15,7 @@ public class ObjectInfoTablePresenter : MonoBehaviour
 
     private void Start()
     {
-        _selectedValue.OnSelected += OnSelected;
+        _selectedValue.onSelected += OnSelected;
         OnSelected(_selectedValue.CurrentValue);
     }
 

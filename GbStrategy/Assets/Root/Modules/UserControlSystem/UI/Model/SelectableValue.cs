@@ -8,11 +8,11 @@ nameof(SelectableValue), order = 0)]
 public class SelectableValue : ScriptableObject
 {
     public ISelectable CurrentValue { get; private set; }
-    public Action<ISelectable> OnSelected;
+    public Action<ISelectable> onSelected;
 
     public void SetValue(ISelectable value)
     {
         CurrentValue = value;
-        OnSelected?.Invoke(value);
+        onSelected?.Invoke(value);
     }
 }

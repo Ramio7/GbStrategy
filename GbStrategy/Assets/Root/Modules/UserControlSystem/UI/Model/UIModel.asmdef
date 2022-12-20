@@ -2,7 +2,10 @@
     "name": "UIModel",
     "rootNamespace": "",
     "references": [
-        "GUID:19a4a1d41b77f1f479b9ad85ae94eeff"
+        "GUID:19a4a1d41b77f1f479b9ad85ae94eeff",
+        "GUID:b6fe052e4f7af5941886efc616e7e13d",
+        "GUID:0197b1a4996dcb549a6e24cadb933f2c",
+        "GUID:536054139857b7e4399853727811874c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
