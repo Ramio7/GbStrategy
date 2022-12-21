@@ -7,7 +7,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
     {
         public override void ExecuteSpecificCommand(IStopCommand command)
         {
-            Debug.Log($"Stop command initialized");
+            Debug.Log($"{name} stopped all processes");
         }
     }
 }

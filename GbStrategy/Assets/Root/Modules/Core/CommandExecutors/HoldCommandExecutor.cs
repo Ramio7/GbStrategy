@@ -7,7 +7,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
     {
         public override void ExecuteSpecificCommand(IHoldCommand command)
         {
-            Debug.Log($"Hold command initialized");
+            Debug.Log($"{name} holds position");
         }
     }
 }

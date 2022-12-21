@@ -1,7 +1,8 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
+using Assets.Root.Modules.Abstractions;
 using UnityEngine;
 
-public class ChomperView : MonoBehaviour, ISelectable
+public class ChomperView : MonoBehaviour, ISelectable, IVictim
 {
     public float Health => _health;
 

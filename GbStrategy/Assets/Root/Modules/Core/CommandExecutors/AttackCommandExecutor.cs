@@ -7,7 +7,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
     {
         public override void ExecuteSpecificCommand(IAttackCommand command)
         {
-            Debug.Log($"Attack command initialized");
+            Debug.Log($"{name} is attacking {command.Target}");
         }
     }
 }

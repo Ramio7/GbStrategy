@@ -7,7 +7,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
     {
         public override void ExecuteSpecificCommand(IPatrolCommand command)
         {
-            Debug.Log($"Patrol command initialized");
+            Debug.Log($"{name} patrols to {command.Target}");
         }
     }
 }
