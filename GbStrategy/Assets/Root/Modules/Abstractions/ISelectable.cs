@@ -1,13 +1,10 @@
+using Assets.Root.Modules.Abstractions;
 using UnityEngine;
 
 namespace Abstractions.Assets.Root.Modules.Abstractions
 {
-    public interface ISelectable
+    public interface ISelectable : IHealthContainer
     {
-        float Health { get; }
-
-        float MaxHealth { get; }
-
         Sprite Icon { get; }
 
         MonoBehaviour HighlighterScript { get; }
