@@ -10,11 +10,13 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
     {
         [SerializeField] private AssetsContext _legacyContext;
         [SerializeField] private Vector3Value _vector3Value;
+        [SerializeField] private VictimValue _victimValue;
 
         public override void InstallBindings()
         {
             Container.Bind<AssetsContext>().FromInstance(_legacyContext);
             Container.Bind<Vector3Value>().FromInstance(_vector3Value);
+            Container.Bind<VictimValue>().FromInstance(_victimValue);
 
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>().To<ProduceUnitCommandCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IAttackCommand>>().To<AttackCommandCreator>().AsTransient();

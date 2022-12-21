@@ -50,8 +50,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
             _moveButton.GetComponent<Selectable>().interactable = value;
             _patrolButton.GetComponent<Selectable>().interactable = value;
             _stopButton.GetComponent<Selectable>().interactable = value;
-            _produceUnitButton.GetComponent<Selectable>().interactable =
-            value;
+            _produceUnitButton.GetComponent<Selectable>().interactable = value;
         }
 
         public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)

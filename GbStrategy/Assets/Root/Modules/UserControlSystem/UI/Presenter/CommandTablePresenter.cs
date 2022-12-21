@@ -1,4 +1,5 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
+using Assets.Root.Modules.UserControlSystem.UI.Model;
 using Assets.Root.Modules.UserControlSystem.UI.View;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
             _model.OnCommandCancel += _view.UnblockAllInteractions;
             _model.OnCommandAccepted += _view.BlockInteractions;
 
-            _selectable.onSelected += ONSelected;
+            _selectable.OnNewValue += ONSelected;
             ONSelected(_selectable.CurrentValue);
         }
         private void ONSelected(ISelectable selectable)

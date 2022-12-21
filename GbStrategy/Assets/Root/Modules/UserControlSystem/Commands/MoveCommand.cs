@@ -11,6 +11,5 @@ namespace Assets.Root.Modules.UserControlSystem.Commands
         {
             Target = target;
         }
-
     }
 }

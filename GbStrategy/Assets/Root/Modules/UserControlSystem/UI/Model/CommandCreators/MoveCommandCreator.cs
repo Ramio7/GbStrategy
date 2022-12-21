@@ -10,6 +10,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators
     public class MoveCommandCreator : CommandCreatorBase<IMoveCommand>
     {
         [Inject] private AssetsContext _context;
+
         private Action<IMoveCommand> _creationCallback;
 
         [Inject] private void Init(Vector3Value groundClicks) => groundClicks.OnNewValue += ONNewValue;
@@ -20,7 +21,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators
             _creationCallback= null;
         }
 
-        protected override void ClassSpecificCommandCreation(Action<IMoveCommand> creationCallback) => _creationCallback= creationCallback;
+        protected override void ClassSpecificCommandCreation(Action<IMoveCommand> creationCallback) => _creationCallback = creationCallback;
 
         public override void ProcessCancel()
         {
