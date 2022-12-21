@@ -288,7 +288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 825406039}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1901,6 +1902,7 @@ GameObject:
   - component: {fileID: 825406037}
   - component: {fileID: 825406036}
   - component: {fileID: 825406035}
+  - component: {fileID: 825406039}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1991,6 +1993,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &825406039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825406034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a6042abbd88e3418f100049dc7a9af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _legacyContext: {fileID: 11400000, guid: cd961b898390dfa42a917d489ca8da21, type: 2}
+  _vector3Value: {fileID: 11400000, guid: 1d68f7c71b6a4ef4e90e923168677386, type: 2}
 --- !u!1001 &829530929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2262,6 +2278,7 @@ MonoBehaviour:
   _camera: {fileID: 963194227}
   _selectedObject: {fileID: 11400000, guid: 3c24a2a67d4e8e74fbe85b339ae18c96, type: 2}
   _eventSystem: {fileID: 326220200}
+  _groundTransform: {fileID: 1621194628}
 --- !u!4 &965670861
 Transform:
   m_ObjectHideFlags: 0
@@ -3158,7 +3175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectable: {fileID: 11400000, guid: 3c24a2a67d4e8e74fbe85b339ae18c96, type: 2}
   _view: {fileID: 1421679408}
-  _context: {fileID: 11400000, guid: cd961b898390dfa42a917d489ca8da21, type: 2}
 --- !u!114 &1421679408
 MonoBehaviour:
   m_ObjectHideFlags: 0

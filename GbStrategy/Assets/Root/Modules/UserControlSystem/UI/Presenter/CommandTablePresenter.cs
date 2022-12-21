@@ -22,10 +22,10 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
             _model.OnCommandCancel += _view.UnblockAllInteractions;
             _model.OnCommandAccepted += _view.BlockInteractions;
 
-            _selectable.OnNewValue += OnSelected;
-            OnSelected(_selectable.CurrentValue);
+            _selectable.onSelected += ONSelected;
+            ONSelected(_selectable.CurrentValue);
         }
-        private void OnSelected(ISelectable selectable)
+        private void ONSelected(ISelectable selectable)
         {
             if (_currentSelectable == selectable)
             {

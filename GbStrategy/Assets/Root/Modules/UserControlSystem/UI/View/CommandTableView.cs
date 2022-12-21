@@ -30,7 +30,8 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
                 { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
                 { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
                 { typeof(CommandExecutorBase<IStopCommand>), _stopButton },
-                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton }
+                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton },
+                { typeof(CommandExecutorBase<IHoldCommand>), _holdButton }
             };
         }
 
@@ -38,12 +39,12 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
         {
             UnblockAllInteractions();
             GetButtonGameObjectByType(ce.GetType())
-            .GetComponent<Selectable>().interactable = false;
+                .GetComponent<Selectable>().interactable = false;
         }
 
-        public void UnblockAllInteractions() => setInteractible(true);
+        public void UnblockAllInteractions() => SetInteractible(true);
 
-        private void setInteractible(bool value)
+        private void SetInteractible(bool value)
         {
             _attackButton.GetComponent<Selectable>().interactable = value;
             _moveButton.GetComponent<Selectable>().interactable = value;

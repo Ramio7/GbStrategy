@@ -9,7 +9,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators
     public class ProduceUnitCommandCommandCreator : CommandCreatorBase<IProduceUnitCommand>
     {
         [Inject] private AssetsContext _context;
-        protected override void classSpecificCommandCreation(Action<IProduceUnitCommand> creationCallback)
+        protected override void ClassSpecificCommandCreation(Action<IProduceUnitCommand> creationCallback)
         {
             creationCallback?.Invoke(_context.Inject(new ProduceUnitCommand()));
         }

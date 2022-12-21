@@ -12,12 +12,13 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators
             CommandExecutorBase<T>;
             if (classSpecificExecutor != null)
             {
-                classSpecificCommandCreation(callback);
+                ClassSpecificCommandCreation(callback);
             }
             return commandExecutor;
         }
-        protected abstract void classSpecificCommandCreation(Action<T>
-        creationCallback);
+
+        protected abstract void ClassSpecificCommandCreation(Action<T> creationCallback);
+
         public virtual void ProcessCancel() { }
     }
 }

@@ -1,10 +1,9 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
 using Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators;
 using System;
-using UnityEngine;
 using Zenject;
 
-public class CommandTableModel : MonoBehaviour
+public class CommandTableModel
 {
     public event Action<ICommandExecutor> OnCommandAccepted;
     public event Action OnCommandSent;
@@ -15,6 +14,7 @@ public class CommandTableModel : MonoBehaviour
     [Inject] private CommandCreatorBase<IStopCommand> _stopper;
     [Inject] private CommandCreatorBase<IMoveCommand> _mover;
     [Inject] private CommandCreatorBase<IPatrolCommand> _patroller;
+    [Inject] private CommandCreatorBase<IHoldCommand> _holder;
 
     private bool _commandIsPending;
 
@@ -22,24 +22,20 @@ public class CommandTableModel : MonoBehaviour
     {
         if (_commandIsPending)
         {
-            processOnCancel();
+            ProcessOnCancel();
         }
         _commandIsPending = true;
         OnCommandAccepted?.Invoke(commandExecutor);
-        _unitProducer.ProcessCommandExecutor(commandExecutor, command =>
-        executeCommandWrapper(commandExecutor, command));
-        _attacker.ProcessCommandExecutor(commandExecutor, command =>
-        executeCommandWrapper(commandExecutor, command));
-        _stopper.ProcessCommandExecutor(commandExecutor, command =>
-        executeCommandWrapper(commandExecutor, command));
-        _mover.ProcessCommandExecutor(commandExecutor, command =>
-        executeCommandWrapper(commandExecutor, command));
-        _patroller.ProcessCommandExecutor(commandExecutor, command =>
-        executeCommandWrapper(commandExecutor, command));
+
+        _unitProducer.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, command));
+        _attacker.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, command));
+        _stopper.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, command));
+        _mover.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, command));
+        _patroller.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, command));
+        _holder.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, command));
     }
 
-    public void executeCommandWrapper(ICommandExecutor commandExecutor,
-    object command)
+    public void ExecuteCommandWrapper(ICommandExecutor commandExecutor, object command)
     {
         commandExecutor.ExecuteCommand(command);
         _commandIsPending = false;
@@ -49,16 +45,17 @@ public class CommandTableModel : MonoBehaviour
     public void OnSelectionChanged()
     {
         _commandIsPending = false;
-        processOnCancel();
+        ProcessOnCancel();
     }
 
-    private void processOnCancel()
+    private void ProcessOnCancel()
     {
         _unitProducer.ProcessCancel();
         _attacker.ProcessCancel();
         _stopper.ProcessCancel();
         _mover.ProcessCancel();
         _patroller.ProcessCancel();
+
         OnCommandCancel?.Invoke();
     }
 }
