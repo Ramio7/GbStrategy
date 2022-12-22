@@ -12,8 +12,17 @@ public class ChomperView : MonoBehaviour, ISelectable, IVictim
 
     public MonoBehaviour HighlighterScript { get => _highlighterScript; }
 
+    public Transform ObjectPosition => _unitPosition;
+
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _health;
     [SerializeField] private Sprite _icon;
     [SerializeField] private MonoBehaviour _highlighterScript;
+
+    private Transform _unitPosition;
+
+    private void Start()
+    {
+        _unitPosition = transform;
+    }
 }

@@ -287,7 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: cca50ca22488a544f9a313d8e58997f6, type: 2}
   _monoInstallers:
   - {fileID: 825406039}
   _installerPrefabs: []
@@ -2006,8 +2007,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _legacyContext: {fileID: 11400000, guid: cd961b898390dfa42a917d489ca8da21, type: 2}
-  _vector3Value: {fileID: 11400000, guid: 1d68f7c71b6a4ef4e90e923168677386, type: 2}
-  _victimValue: {fileID: 11400000, guid: 82702c49a89a58f4fade35d1bae96d47, type: 2}
 --- !u!1001 &829530929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,7 +2239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 39.1, y: 37.5, z: 19.57}
+  m_LocalPosition: {x: 42.7, y: 21.19, z: 39.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

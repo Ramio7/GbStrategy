@@ -4,6 +4,12 @@ namespace Assets.Root.Modules.UserControlSystem.Commands
 {
     public class HoldCommand : IHoldCommand
     {
+        public bool OnHold { get; }
+
+        public HoldCommand()
+        {
+            OnHold = true;
+        }
 
     }
 }

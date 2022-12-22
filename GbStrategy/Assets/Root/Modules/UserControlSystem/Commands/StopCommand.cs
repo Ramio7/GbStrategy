@@ -4,6 +4,8 @@ namespace Assets.Root.Modules.UserControlSystem.Commands
 {
     public class StopCommand : IStopCommand
     {
-        
+        public StopCommand()
+        {
+        }
     }
 }

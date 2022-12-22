@@ -57,6 +57,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
             _stopper.ProcessCancel();
             _mover.ProcessCancel();
             _patroller.ProcessCancel();
+            _holder.ProcessCancel();
 
             OnCommandCancel?.Invoke();
         }

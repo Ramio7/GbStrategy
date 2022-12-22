@@ -5,6 +5,8 @@ namespace Abstractions.Assets.Root.Modules.Abstractions
 {
     public interface ISelectable : IHealthContainer
     {
+        Transform ObjectPosition { get; }
+
         Sprite Icon { get; }
 
         MonoBehaviour HighlighterScript { get; }
