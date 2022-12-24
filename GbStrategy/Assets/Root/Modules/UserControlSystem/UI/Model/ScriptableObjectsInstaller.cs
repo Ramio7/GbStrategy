@@ -1,3 +1,5 @@
+using Abstractions;
+using Assets.Root.Modules.Abstractions;
 using Assets.Root.Modules.UserControlSystem.UI.Model;
 using Assets.Root.Modules.Utils;
 using UnityEngine;
@@ -17,5 +19,7 @@ public class ScriptableObjectsInstaller : ScriptableObjectInstaller<ScriptableOb
         Container.Bind<VictimValue>().FromInstance(_victimValue);
         Container.Bind<SelectableValue>().FromInstance(_selectableValue);
         Container.Bind<AssetsContext>().FromInstance(_context);
+        Container.Bind<IAwaitable<IVictim>>().FromInstance(_victimValue);
+        Container.Bind<IAwaitable<Vector3>>().FromInstance(_vector3Value);
     }
 }
