@@ -8,6 +8,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
     {
         [SerializeField] private UnitMovementStop _stop;
         [SerializeField] private Animator _animator;
+
         public override async void ExecuteSpecificCommand(IMoveCommand command)
         {
             GetComponent<NavMeshAgent>().destination = command.Target;

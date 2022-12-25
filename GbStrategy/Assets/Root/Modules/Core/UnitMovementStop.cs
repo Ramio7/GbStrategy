@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class UnitMovementStop : MonoBehaviour, IAwaitable<AsyncExtensions.Void>
+public class UnitMovementStop : AwatableBase<AsyncExtensions.Void>
 {
     public class StopAwaiter : IAwaiter<AsyncExtensions.Void>
     {
@@ -59,5 +59,6 @@ public class UnitMovementStop : MonoBehaviour, IAwaitable<AsyncExtensions.Void>
             }
         }
     }
-    public IAwaiter<AsyncExtensions.Void> GetAwaiter() => new StopAwaiter(this);
+
+    public override IAwaiter<AsyncExtensions.Void> GetAwaiter() => new StopAwaiter(this);
 }
