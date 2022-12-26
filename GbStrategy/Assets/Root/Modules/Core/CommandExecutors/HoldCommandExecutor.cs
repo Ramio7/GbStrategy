@@ -1,13 +1,16 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Root.Modules.Core.CommandExecutors
 {
     public class HoldCommandExecutor : CommandExecutorBase<IHoldCommand>
     {
-        public override void ExecuteSpecificCommand(IHoldCommand command)
+        public override async void ExecuteSpecificCommand(IHoldCommand command)
         {
-            Debug.Log($"{name} holds position");
+            Debug.Log($"{command} initiated");
+            await Task.WhenAny();
+            Debug.Log($"{command} canceled");
         }
     }
 }
