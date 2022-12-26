@@ -12,6 +12,7 @@ public class ScriptableObjectsInstaller : ScriptableObjectInstaller<ScriptableOb
     [SerializeField] private VictimValue _victimValue;
     [SerializeField] private SelectableValue _selectableValue;
     [SerializeField] private AssetsContext _context;
+    [SerializeField] private BoolValue _boolValue;
 
     public override void InstallBindings()
     {
@@ -21,5 +22,6 @@ public class ScriptableObjectsInstaller : ScriptableObjectInstaller<ScriptableOb
         Container.Bind<AssetsContext>().FromInstance(_context);
         Container.Bind<IAwaitable<IVictim>>().FromInstance(_victimValue);
         Container.Bind<IAwaitable<Vector3>>().FromInstance(_vector3Value);
+        Container.Bind<BoolValue>().FromInstance(_boolValue);
     }
 }
