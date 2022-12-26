@@ -73,3 +73,5 @@ GbStrategy/UserSettings/
 GbStrategy/.vsconfig
 
 GbStrategy/Temp/
+
+GbStrategy/Assets/Plugins/Zenject/Source/Zenject.csproj.meta
