@@ -16,3 +16,4 @@ MonoBehaviour:
   _victimValue: {fileID: 11400000, guid: 82702c49a89a58f4fade35d1bae96d47, type: 2}
   _selectableValue: {fileID: 11400000, guid: 3c24a2a67d4e8e74fbe85b339ae18c96, type: 2}
   _context: {fileID: 11400000, guid: cd961b898390dfa42a917d489ca8da21, type: 2}
+  _boolValue: {fileID: 11400000, guid: 43ca9b09e8e3adf4babb8a3c2f0aebd2, type: 2}

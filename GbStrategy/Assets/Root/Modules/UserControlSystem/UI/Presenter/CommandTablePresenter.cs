@@ -9,7 +9,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
 {
     public class CommandTablePresenter : MonoBehaviour
     {
-        [SerializeField] private SelectableValue _selectable;
+        [Inject] private SelectableValue _selectable;
         [SerializeField] private CommandTableView _view;
 
         [Inject] private CommandTableModel _model;

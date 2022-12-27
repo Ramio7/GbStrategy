@@ -2,6 +2,7 @@ using Abstractions.Assets.Root.Modules.Abstractions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class ObjectInfoTablePresenter : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ObjectInfoTablePresenter : MonoBehaviour
     [SerializeField] private Image _sliderBackground;
     [SerializeField] private Image _sliderFillImage;
 
-    [SerializeField] private SelectableValue _selectedValue;
+    [Inject] private SelectableValue _selectedValue;
 
     private void Start()
     {
