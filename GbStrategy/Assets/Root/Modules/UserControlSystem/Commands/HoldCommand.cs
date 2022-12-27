@@ -1,4 +1,5 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
+using System.Threading.Tasks;
 
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
@@ -11,9 +12,9 @@ namespace Assets.Root.Modules.UserControlSystem.Commands
             OnHold = true;
         }
 
-        public void OnDispose()
+        public Task OnDispose()
         {
-            OnHold = false;
+            return Task.FromResult(OnHold = false);
         }
     }
 }
