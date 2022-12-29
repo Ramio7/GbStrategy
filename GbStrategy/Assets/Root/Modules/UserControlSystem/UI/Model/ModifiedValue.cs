@@ -56,6 +56,5 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
         {
             return new NewValueNotifier<T>(this);
         }
-
     }
 }

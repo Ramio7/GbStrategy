@@ -38,5 +38,4 @@ public class ObjectInfoTablePresenter : MonoBehaviour
             _sliderFillImage.color = color;
         }
     }
-
 }

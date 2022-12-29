@@ -3,6 +3,7 @@ using Assets.Root.Modules.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,12 +58,9 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
         {
             foreach (var currentExecutor in commandExecutors)
             {
-                var buttonGameObject =
-                GetButtonGameObjectByType(currentExecutor.GetType());
+                var buttonGameObject = GetButtonGameObjectByType(currentExecutor.GetType());
                 buttonGameObject.SetActive(true);
-                var button = buttonGameObject.GetComponent<Button>();
-                button.onClick.AddListener(() =>
-                OnClick?.Invoke(currentExecutor));
+                buttonGameObject.GetComponent<Button>().OnClickAsObservable().Subscribe(_ => OnClick.Invoke(currentExecutor));
             }
         }
 
@@ -79,8 +77,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
         {
             foreach (var kvp in _buttonsByExecutorType)
             {
-                kvp.Value
-                .GetComponent<Button>().onClick.RemoveAllListeners();
+                kvp.Value.GetComponent<Button>().OnClickAsObservable().Subscribe().Dispose();
                 kvp.Value.SetActive(false);
             }
         }
