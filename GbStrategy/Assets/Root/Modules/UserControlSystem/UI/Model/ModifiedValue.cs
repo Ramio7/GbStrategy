@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Root.Modules.UserControlSystem.UI.Model
 {
-    public class ModifiedValue<T> : ScriptableObject, IAwaitable<T>
+    public abstract class ModifiedValue<T> : ScriptableObject, IAwaitable<T>
     {
         public class NewValueNotifier<TAwaited> : IAwaiter<TAwaited>
         {
@@ -47,7 +47,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
         public T CurrentValue { get; private set; }
         public Action<T> OnNewValue;
 
-        public void SetValue(T value)
+        public virtual void SetValue(T value)
         {
             CurrentValue = value;
             OnNewValue?.Invoke(value);

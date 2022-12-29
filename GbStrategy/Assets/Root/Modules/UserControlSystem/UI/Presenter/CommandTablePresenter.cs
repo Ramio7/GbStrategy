@@ -1,7 +1,9 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
 using Assets.Root.Modules.UserControlSystem.UI.Model;
 using Assets.Root.Modules.UserControlSystem.UI.View;
+using System;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +11,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
 {
     public class CommandTablePresenter : MonoBehaviour
     {
-        [Inject] private SelectableValue _selectable;
+        [Inject] private IObservable<ISelectable> _selectable;
         [Inject] private CommandTableModel _model;
 
         [SerializeField] private CommandTableView _view;
@@ -23,8 +25,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
             _model.OnCommandCancel += _view.UnblockAllInteractions;
             _model.OnCommandAccepted += _view.BlockInteractions;
 
-            _selectable.OnNewValue += OnSelected;
-            OnSelected(_selectable.CurrentValue);
+            _selectable.Subscribe(OnSelected);
         }
 
         private void OnSelected(ISelectable selectable)

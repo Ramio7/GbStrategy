@@ -1,5 +1,7 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
+using System;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -12,13 +14,13 @@ public class ObjectInfoTablePresenter : MonoBehaviour
     [SerializeField] private Image _sliderBackground;
     [SerializeField] private Image _sliderFillImage;
 
-    [Inject] private SelectableValue _selectedValue;
+    [Inject] private IObservable<ISelectable> _selectable;
 
     private void Start()
     {
-        _selectedValue.OnNewValue += OnSelected;
-        OnSelected(_selectedValue.CurrentValue);
+        _selectable.Subscribe(OnSelected);
     }
+
 
     private void OnSelected(ISelectable selected)
     {

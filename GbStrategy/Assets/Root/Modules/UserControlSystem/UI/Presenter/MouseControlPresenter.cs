@@ -24,51 +24,41 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
         private void Start()
         {
             _groundPlane = new Plane(_groundTransform.up, 0);
-            var leftClickStream = Observable.EveryUpdate().Where(_ => Input.GetMouseButtonUp(0));
-            var rightClickStream = Observable.EveryUpdate().Where(_ => Input.GetMouseButtonUp(1));
 
-            leftClickStream.Subscribe(_ => MouseSelect());
-            rightClickStream.Subscribe(_ => ExecuteCommand());
-        }
+            var nonBlockedByUiFramesStream = Observable.EveryUpdate().Where(_ => !_eventSystem.IsPointerOverGameObject());
 
-        private void MouseSelect()
-        {
-            if (_eventSystem.IsPointerOverGameObject())
+            var leftClickStream = nonBlockedByUiFramesStream.Where(_ => Input.GetMouseButtonUp(0));
+            var rightClickStream = nonBlockedByUiFramesStream.Where(_ => Input.GetMouseButtonUp(1));
+
+            var lmbRaycast = leftClickStream.Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
+            var rmbRaycast = rightClickStream.Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
+
+            var lmbHits = lmbRaycast.Select(selector: ray => Physics.RaycastAll(ray));
+            var rmbHits = rmbRaycast.Select(selector: ray => (ray, Physics.RaycastAll(ray)));
+
+            lmbHits.Subscribe(hits =>
             {
-                return;
-            }
+                if (RaycastTypeHandler<ISelectable>(hits, out var selectable))
+                {
+                    _selectedObject.SetValue(selectable);
+                }
+                else
+                {
+                    _selectedObject.SetValue(null);
+                }
+            });
 
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
-            var hits = Physics.RaycastAll(ray);
-
-            if (RaycastTypeHandler<ISelectable>(hits, out var selectable))
+            rmbHits.Subscribe((ray, hits) =>
             {
-                _selectedObject.SetValue(selectable);
-            }
-            else if (_groundPlane.Raycast(ray, out var enter))
-            {
-                _selectedObject.SetValue(null);
-            }
-        }
-
-        private void ExecuteCommand()
-        {
-            if (_eventSystem.IsPointerOverGameObject())
-            {
-                return;
-            }
-
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
-            var hits = Physics.RaycastAll(ray);
-
-            if (RaycastTypeHandler<IVictim>(hits, out var victim))
-            {
-                _victimRMB.SetValue(victim);
-            }
-            else if (_groundPlane.Raycast(ray, out var enter))
-            {
-                _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
-            }
+                if (RaycastTypeHandler<IVictim>(hits, out var victim))
+                {
+                    _victimRMB.SetValue(victim);
+                }
+                else if (_groundPlane.Raycast(ray, out var enter))
+                {
+                    _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
+                }
+            });
         }
 
         private bool RaycastTypeHandler<T>(RaycastHit[] hits, out T result) where T : class

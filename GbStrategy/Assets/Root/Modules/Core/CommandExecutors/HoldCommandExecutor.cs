@@ -8,6 +8,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
     public class HoldCommandExecutor : CommandExecutorBase<IHoldCommand>
     {
         [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private Animator _animator;
         [SerializeField] private float _defaultUnitSpeed;
 
         public bool OnHold { get; private set; }
@@ -19,13 +20,13 @@ namespace Assets.Root.Modules.Core.CommandExecutors
             OnHold = command.OnHold;
             if (_defaultUnitSpeed == 0) _defaultUnitSpeed = _agent.speed;
             _agent.speed = 0;
-            Debug.Log($"Unit base speed {_defaultUnitSpeed}");
-            Debug.Log($"Unit hold speed {_agent.speed}");
+            _animator.SetTrigger("Idle");
             OnCommandCancel += CommandCancel;
         }
 
         private void CommandCancel()
         {
+            _animator.ResetTrigger("Idle");
             _agent.speed = _defaultUnitSpeed;
             OnHold = false;
         }

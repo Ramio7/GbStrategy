@@ -1,7 +1,9 @@
 using Abstractions;
+using Abstractions.Assets.Root.Modules.Abstractions;
 using Assets.Root.Modules.Abstractions;
 using Assets.Root.Modules.UserControlSystem.UI.Model;
 using Assets.Root.Modules.Utils;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -23,5 +25,6 @@ public class ScriptableObjectsInstaller : ScriptableObjectInstaller<ScriptableOb
         Container.Bind<AssetsContext>().FromInstance(_context);
         Container.Bind<IAwaitable<IVictim>>().FromInstance(_victimValue);
         Container.Bind<IAwaitable<Vector3>>().FromInstance(_vector3Value);
+        Container.Bind<IObservable<ISelectable>>().FromInstance(_selectableValue);
     }
 }
