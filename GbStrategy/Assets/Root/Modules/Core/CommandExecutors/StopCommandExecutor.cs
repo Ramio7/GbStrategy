@@ -1,13 +1,15 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
-using UnityEngine;
+using System.Threading;
 
 namespace Assets.Root.Modules.Core.CommandExecutors
 {
     public class StopCommandExecutor : CommandExecutorBase<IStopCommand>
     {
+        public CancellationTokenSource CancellationTokenSource { get; set; }
+
         public override void ExecuteSpecificCommand(IStopCommand command)
         {
-            Debug.Log($"{name} stopped all processes");
+            CancellationTokenSource?.Cancel();
         }
     }
 }

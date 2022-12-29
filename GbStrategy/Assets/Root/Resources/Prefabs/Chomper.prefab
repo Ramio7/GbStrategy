@@ -20956,6 +20956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 5864506793274511527}
+  <DefaultUnitSpeed>k__BackingField: 0
 --- !u!114 &5577329751567890939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20970,6 +20971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stop: {fileID: 4446714891438083947}
   _animator: {fileID: 550902865843138712}
+  _stopCommandExecutor: {fileID: 3508110980120433558}
+  _holdCommandExecutor: {fileID: 613239942279603985}
 --- !u!114 &8081515288342789868
 MonoBehaviour:
   m_ObjectHideFlags: 0

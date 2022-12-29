@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public class ProduceUnitCommand : IProduceUnitCommand
+    public class ProduceUnitCommand : Command, IProduceUnitCommand
     {
         public GameObject UnitPrefab => _unitPrefab;
         [InjectAsset("Chomper")] private GameObject _unitPrefab;

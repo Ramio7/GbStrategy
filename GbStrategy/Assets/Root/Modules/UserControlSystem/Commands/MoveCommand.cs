@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public class MoveCommand : IMoveCommand
+    public class MoveCommand : Command, IMoveCommand
     {
         public Vector3 Target { get; }
 
