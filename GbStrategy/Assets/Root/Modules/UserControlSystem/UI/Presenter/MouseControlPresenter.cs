@@ -37,12 +37,17 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
             {
                 return;
             }
+
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
             var hits = Physics.RaycastAll(ray);
 
             if (RaycastTypeHandler<ISelectable>(hits, out var selectable))
             {
                 _selectedObject.SetValue(selectable);
+            }
+            else if (_groundPlane.Raycast(ray, out var enter))
+            {
+                _selectedObject.SetValue(null);
             }
         }
 
@@ -69,10 +74,12 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
         private bool RaycastTypeHandler<T>(RaycastHit[] hits, out T result) where T : class
         {
             result = default;
+
             if (hits.Length == 0)
             {
                 return false;
             }
+
             result = hits
             .Select(hit =>
             hit.collider.GetComponentInParent<T>())
