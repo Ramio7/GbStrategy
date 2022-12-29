@@ -11,10 +11,5 @@ namespace Assets.Root.Modules.UserControlSystem.Commands
         {
             OnHold = true;
         }
-
-        public Task OnDispose()
-        {
-            return Task.FromResult(OnHold = false);
-        }
     }
 }

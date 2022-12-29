@@ -15,7 +15,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
 
         public override async void ExecuteSpecificCommand(IMoveCommand command)
         {
-            _holdCommandExecutor.OnCommandCancel();
+            if (_holdCommandExecutor.OnHold) _holdCommandExecutor.OnCommandCancel();
 
             GetComponent<NavMeshAgent>().destination = command.Target;
             _animator.SetTrigger("Walk");

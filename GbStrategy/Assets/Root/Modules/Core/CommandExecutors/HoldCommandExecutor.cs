@@ -10,10 +10,13 @@ namespace Assets.Root.Modules.Core.CommandExecutors
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private float _defaultUnitSpeed;
 
+        public bool OnHold { get; private set; }
+
         public Action OnCommandCancel;
 
         public override void ExecuteSpecificCommand(IHoldCommand command)
         {
+            OnHold = command.OnHold;
             if (_defaultUnitSpeed == 0) _defaultUnitSpeed = _agent.speed;
             _agent.speed = 0;
             Debug.Log($"Unit base speed {_defaultUnitSpeed}");
@@ -24,6 +27,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
         private void CommandCancel()
         {
             _agent.speed = _defaultUnitSpeed;
+            OnHold = false;
         }
     }
 }
