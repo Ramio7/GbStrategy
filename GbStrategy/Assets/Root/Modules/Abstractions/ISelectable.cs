@@ -3,11 +3,9 @@ using UnityEngine;
 
 namespace Abstractions.Assets.Root.Modules.Abstractions
 {
-    public interface ISelectable : IHealthContainer
+    public interface ISelectable : IHealthContainer, IIconContainer
     {
         Transform ObjectPosition { get; }
-
-        Sprite Icon { get; }
 
         MonoBehaviour HighlighterScript { get; }
     }

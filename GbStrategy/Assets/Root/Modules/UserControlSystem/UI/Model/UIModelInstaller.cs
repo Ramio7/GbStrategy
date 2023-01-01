@@ -9,6 +9,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
     public class UIModelInstaller : MonoInstaller
     {
         [SerializeField] private AssetsContext _legacyContext;
+        [SerializeField] private Sprite _chomperSprite;
 
         public override void InstallBindings()
         {
@@ -19,7 +20,12 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
             Container.Bind<CommandCreatorBase<IStopCommand>>().To<StopCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IHoldCommand>>().To<HoldCommandCreator>().AsTransient();
 
+            Container.Bind<float>().WithId("Chomper").FromInstance(5f);
+            Container.Bind<string>().WithId("Chomper").FromInstance("Chomper");
+            Container.Bind<Sprite>().WithId("Chomper").FromInstance(_chomperSprite);
+
             Container.Bind<CommandTableModel>().AsSingle();
+            Container.Bind<ObjectStatusTableModel>().AsSingle();
         }
     }
 }
