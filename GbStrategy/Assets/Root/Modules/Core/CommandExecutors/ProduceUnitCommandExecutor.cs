@@ -1,12 +1,16 @@
 using Abstractions;
 using Abstractions.Assets.Root.Modules.Abstractions;
+using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Root.Modules.Core.CommandExecutors
 {
     public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitCommand>, IUnitProducer
     {
+        [Inject] DiContainer _diContainer;
+
         public IReadOnlyReactiveCollection<IUnitProductionTask> Queue => _queue;
 
         [SerializeField] private Transform _unitsParent;
@@ -25,7 +29,8 @@ namespace Assets.Root.Modules.Core.CommandExecutors
             if (innerTask.TimeLeft <= 0)
             {
                 RemoveTaskAtIndex(0);
-                Instantiate(innerTask.UnitPrefab, new Vector3(transform.position.x + Random.Range(-10, 10), 0, transform.position.z + Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+                _diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+
             }
         }
 
@@ -40,7 +45,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
             _queue.RemoveAt(_queue.Count - 1);
         }
 
-        public override void ExecuteSpecificCommand(IProduceUnitCommand command)
+        public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
             _queue.Add(new UnitProductionTask(command.ProductionTime, command.Icon, command.UnitPrefab, command.UnitName));
         }

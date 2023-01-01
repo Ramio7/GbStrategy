@@ -10,10 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3606816606921793394}
   - component: {fileID: 9006291108563486217}
+  - component: {fileID: -4008700904282910093}
   - component: {fileID: 2456157838009927443}
   - component: {fileID: 3723524138323997622}
+  - component: {fileID: -1772435082083087012}
   - component: {fileID: 6219993800006704632}
   - component: {fileID: 8605160891610601804}
+  - component: {fileID: 122047329681416572}
   m_Layer: 0
   m_Name: MainBuilding
   m_TagString: Untagged
@@ -66,6 +69,18 @@ LODGroup:
     renderers:
     - renderer: {fileID: 9006291108547022927}
   m_Enabled: 1
+--- !u!114 &-4008700904282910093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006291108545089161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9577b09b36b2d418556c6b00fbf26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2456157838009927443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +109,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04b1f799922fe44abe92a32fd90178f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitsContainer: {fileID: 0}
+  _unitsParent: {fileID: 0}
+  _maximumUnitsInQueue: 6
+--- !u!114 &-1772435082083087012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006291108545089161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f021f0bf165e14989062c883343ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &6219993800006704632
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17631,6 +17659,24 @@ MonoBehaviour:
     - {x: -0.24491967, y: -0.23225006, z: 0.94131523}
     - {x: -0.9710279, y: 0.014138711, z: 0.23854752}
     - {x: -0.69185466, y: -0.54103196, z: 0.47814378}
+--- !u!114 &122047329681416572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006291108545089161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: -4008700904282910093}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &9006291108545089163
 GameObject:
   m_ObjectHideFlags: 0

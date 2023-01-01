@@ -3339,8 +3339,10 @@ GameObject:
   m_Component:
   - component: {fileID: 550902865850654586}
   - component: {fileID: 550902865843138712}
+  - component: {fileID: 2338903898259603034}
   - component: {fileID: 1738599687675028914}
   - component: {fileID: 8909406201913643915}
+  - component: {fileID: 4663022538936034595}
   - component: {fileID: 420564891233831542}
   - component: {fileID: 613239942279603985}
   - component: {fileID: 5577329751567890939}
@@ -3349,6 +3351,7 @@ GameObject:
   - component: {fileID: 5864506793274511527}
   - component: {fileID: 171697097363548917}
   - component: {fileID: 4446714891438083947}
+  - component: {fileID: -8276112450911099558}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -3393,6 +3396,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2338903898259603034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550902865850418010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9577b09b36b2d418556c6b00fbf26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1738599687675028914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20931,6 +20946,18 @@ MonoBehaviour:
     - {x: -0.24491967, y: -0.23225006, z: 0.94131523}
     - {x: -0.9710279, y: 0.014138711, z: 0.23854752}
     - {x: -0.69185466, y: -0.54103196, z: 0.47814378}
+--- !u!114 &4663022538936034595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550902865850418010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e050c50a5c6bf8468baff60e261496e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &420564891233831542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21049,3 +21076,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 5864506793274511527}
+--- !u!114 &-8276112450911099558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550902865850418010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 2338903898259603034}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}

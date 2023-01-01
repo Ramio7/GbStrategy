@@ -1,6 +1,7 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
 using Assets.Root.Modules.Utils;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
         [SerializeField] private StopCommandExecutor _stopCommandExecutor;
         [SerializeField] private HoldCommandExecutor _holdCommandExecutor;
 
-        public override async void ExecuteSpecificCommand(IMoveCommand command)
+        public override async Task ExecuteSpecificCommand(IMoveCommand command)
         {
             if (_holdCommandExecutor.OnHold) _holdCommandExecutor.OnCommandCancel();
 

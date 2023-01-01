@@ -1,5 +1,4 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
-using Assets.Root.Modules.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
 {
     public class CommandTableView : MonoBehaviour
     {
-        public Action<ICommandExecutor> OnClick;
+        public Action<ICommandExecutor, ICommandsQueue> OnClick;
 
         [SerializeField] private GameObject _attackButton;
         [SerializeField] private GameObject _moveButton;
@@ -26,12 +25,12 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
         {
             _buttonsByExecutorType = new Dictionary<Type, GameObject>
             {
-                { typeof(CommandExecutorBase<IAttackCommand>), _attackButton },
-                { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
-                { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
-                { typeof(CommandExecutorBase<IStopCommand>), _stopButton },
-                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton },
-                { typeof(CommandExecutorBase<IHoldCommand>), _holdButton }
+                { typeof(ICommandExecutor<IAttackCommand>), _attackButton },
+                { typeof(ICommandExecutor<IMoveCommand>), _moveButton },
+                { typeof(ICommandExecutor<IPatrolCommand>), _patrolButton },
+                { typeof(ICommandExecutor<IStopCommand>), _stopButton },
+                { typeof(ICommandExecutor<IProduceUnitCommand>), _produceUnitButton },
+                { typeof(ICommandExecutor<IHoldCommand>), _holdButton }
             };
         }
 
@@ -54,13 +53,13 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
             _holdButton.GetComponent<Selectable>().interactable = value;
         }
 
-        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)
+        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors, ICommandsQueue queue)
         {
             foreach (var currentExecutor in commandExecutors)
             {
                 var buttonGameObject = GetButtonGameObjectByType(currentExecutor.GetType());
                 buttonGameObject.SetActive(true);
-                buttonGameObject.GetComponent<Button>().OnClickAsObservable().Subscribe(_ => OnClick.Invoke(currentExecutor));
+                buttonGameObject.GetComponent<Button>().OnClickAsObservable().Subscribe(_ => OnClick.Invoke(currentExecutor, queue));
             }
         }
 

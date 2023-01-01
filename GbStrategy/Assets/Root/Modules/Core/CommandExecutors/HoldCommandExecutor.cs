@@ -1,5 +1,6 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,7 +16,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
 
         public Action OnCommandCancel;
 
-        public override void ExecuteSpecificCommand(IHoldCommand command)
+        public override async Task ExecuteSpecificCommand(IHoldCommand command)
         {
             OnHold = command.OnHold;
             if (_defaultUnitSpeed == 0) _defaultUnitSpeed = _agent.speed;

@@ -1,4 +1,5 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Root.Modules.Core.CommandExecutors
@@ -8,7 +9,7 @@ namespace Assets.Root.Modules.Core.CommandExecutors
         [SerializeField] private UnitMovementStop _stop;
         [SerializeField] private Animator _animator;
 
-        public override void ExecuteSpecificCommand(IPatrolCommand command)
+        public override async Task ExecuteSpecificCommand(IPatrolCommand command)
         {
             Debug.Log($"{name} patrols from {command.Start} to {command.Target}");
         }

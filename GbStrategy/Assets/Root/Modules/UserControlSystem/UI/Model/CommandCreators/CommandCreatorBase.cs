@@ -7,7 +7,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators
     {
         public ICommandExecutor ProcessCommandExecutor(ICommandExecutor commandExecutor, Action<T> callback)
         {
-            var classSpecificExecutor = commandExecutor as CommandExecutorBase<T>;
+            var classSpecificExecutor = commandExecutor as ICommandExecutor<T>;
             if (classSpecificExecutor != null)
             {
                 ClassSpecificCommandCreation(callback);
