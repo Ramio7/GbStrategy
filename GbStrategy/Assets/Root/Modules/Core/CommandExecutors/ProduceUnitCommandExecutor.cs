@@ -1,5 +1,6 @@
 using Abstractions;
 using Abstractions.Assets.Root.Modules.Abstractions;
+using Assets.Root.Modules.UserControlSystem.Commands;
 using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -29,8 +30,10 @@ namespace Assets.Root.Modules.Core.CommandExecutors
             if (innerTask.TimeLeft <= 0)
             {
                 RemoveTaskAtIndex(0);
-                _diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
-
+                var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
+                var queue = instance.GetComponent<ICommandsQueue>();
+                var mainBuilding = GetComponent<MainBuildingView>();
+                queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
             }
         }
 

@@ -18,6 +18,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
         [SerializeField] private GameObject _stopButton;
         [SerializeField] private GameObject _produceUnitButton;
         [SerializeField] private GameObject _holdButton;
+        [SerializeField] private GameObject _setRallyPointButton;
 
         private Dictionary<Type, GameObject> _buttonsByExecutorType;
 
@@ -30,7 +31,8 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
                 { typeof(ICommandExecutor<IPatrolCommand>), _patrolButton },
                 { typeof(ICommandExecutor<IStopCommand>), _stopButton },
                 { typeof(ICommandExecutor<IProduceUnitCommand>), _produceUnitButton },
-                { typeof(ICommandExecutor<IHoldCommand>), _holdButton }
+                { typeof(ICommandExecutor<IHoldCommand>), _holdButton },
+                { typeof(ICommandExecutor<ISetRallyPointCommand>), _setRallyPointButton }
             };
         }
 
@@ -51,6 +53,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
             _stopButton.GetComponent<Selectable>().interactable = value;
             _produceUnitButton.GetComponent<Selectable>().interactable = value;
             _holdButton.GetComponent<Selectable>().interactable = value;
+            _setRallyPointButton.GetComponent<Selectable>().interactable = value;
         }
 
         public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors, ICommandsQueue queue)

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6219993800006704632}
   - component: {fileID: 8605160891610601804}
   - component: {fileID: 122047329681416572}
+  - component: {fileID: -3076546369251168718}
   m_Layer: 0
   m_Name: MainBuilding
   m_TagString: Untagged
@@ -31,8 +32,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9006291108545089161}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.883663, y: 4.1018143, z: 52.34726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -97,6 +98,7 @@ MonoBehaviour:
   _health: 500
   _icon: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
   _highlighterScript: {fileID: 8605160891610601804}
+  _rallyPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &3723524138323997622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17677,6 +17679,18 @@ MonoBehaviour:
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
+--- !u!114 &-3076546369251168718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006291108545089161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157a6b40f8153b645b7f653295cee7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9006291108545089163
 GameObject:
   m_ObjectHideFlags: 0
@@ -17692,8 +17706,8 @@ GameObject:
   m_Name: VegetationLarge04_LOD00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &9006291108544729771
 Transform:
@@ -17775,8 +17789,8 @@ GameObject:
   m_Name: VegetationLarge04_LOD01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &9006291108544729773
 Transform:
@@ -17858,8 +17872,8 @@ GameObject:
   m_Name: VegetationLarge04_LOD02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &9006291108544729775
 Transform:

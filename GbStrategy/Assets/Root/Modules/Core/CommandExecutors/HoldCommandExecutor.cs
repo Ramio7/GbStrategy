@@ -12,24 +12,26 @@ namespace Assets.Root.Modules.Core.CommandExecutors
         [SerializeField] private Animator _animator;
         [SerializeField] private float _defaultUnitSpeed;
 
-        public bool OnHold { get; private set; }
+        public Action CommandCancel { get; private set; }
 
-        public Action OnCommandCancel;
+        public bool OnHold { get; private set; }
 
         public override async Task ExecuteSpecificCommand(IHoldCommand command)
         {
             OnHold = command.OnHold;
+            _animator.SetBool("Idle", true);
+            _animator.SetBool("Walk", false);
             if (_defaultUnitSpeed == 0) _defaultUnitSpeed = _agent.speed;
             _agent.speed = 0;
-            _animator.SetTrigger("Idle");
-            OnCommandCancel += CommandCancel;
+            CommandCancel += OnCommandCancel;
         }
 
-        private void CommandCancel()
+        public void OnCommandCancel()
         {
-            _animator.ResetTrigger("Idle");
+            _animator.SetBool("Walk", true);
+            _animator.SetBool("Idle", false);
             _agent.speed = _defaultUnitSpeed;
-            OnHold = false;
+            OnHold = false;;
         }
     }
 }

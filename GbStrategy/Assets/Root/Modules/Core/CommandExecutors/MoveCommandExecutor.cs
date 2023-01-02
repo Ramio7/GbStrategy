@@ -16,10 +16,11 @@ namespace Assets.Root.Modules.Core.CommandExecutors
 
         public override async Task ExecuteSpecificCommand(IMoveCommand command)
         {
-            if (_holdCommandExecutor.OnHold) _holdCommandExecutor.OnCommandCancel();
+            if (_holdCommandExecutor.OnHold) _holdCommandExecutor.CommandCancel();
 
             GetComponent<NavMeshAgent>().destination = command.Target;
-            _animator.SetTrigger("Walk");
+            _animator.SetBool("Walk", true);
+            _animator.SetBool("Idle", false);
             _stopCommandExecutor.CancellationTokenSource = new CancellationTokenSource();
             try
             {
@@ -32,7 +33,8 @@ namespace Assets.Root.Modules.Core.CommandExecutors
                 GetComponent<NavMeshAgent>().ResetPath();
             }
             _stopCommandExecutor.CancellationTokenSource = null;
-            _animator.SetTrigger("Idle");
+            _animator.SetBool("Idle", true);
+            _animator.SetBool("Walk", false);
         }
     }
 }

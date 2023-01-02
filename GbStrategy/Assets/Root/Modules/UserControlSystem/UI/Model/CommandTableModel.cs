@@ -18,6 +18,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
         [Inject] private CommandCreatorBase<IMoveCommand> _mover;
         [Inject] private CommandCreatorBase<IPatrolCommand> _patroller;
         [Inject] private CommandCreatorBase<IHoldCommand> _holder;
+        [Inject] private CommandCreatorBase<ISetRallyPointCommand> _rally;
 
         private bool _commandIsPending;
 
@@ -34,6 +35,8 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
             _stopper.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
             _mover.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
             _patroller.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
+            _holder.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
+            _rally.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
         }
 
 
@@ -63,6 +66,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
             _mover.ProcessCancel();
             _patroller.ProcessCancel();
             _holder.ProcessCancel();
+            _rally.ProcessCancel();
 
             OnCommandCancel?.Invoke();
         }

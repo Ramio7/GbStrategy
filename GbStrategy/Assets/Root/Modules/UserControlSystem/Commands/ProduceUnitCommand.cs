@@ -11,6 +11,7 @@ namespace Assets.Root.Modules.UserControlSystem.Commands
         [Inject(Id = "Chomper")] public Sprite Icon { get; }
         [Inject(Id = "Chomper")] public float ProductionTime { get; }
         public GameObject UnitPrefab => _unitPrefab;
+
         [InjectAsset("Chomper")] private GameObject _unitPrefab;
     }
 }

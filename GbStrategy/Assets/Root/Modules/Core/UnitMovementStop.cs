@@ -15,12 +15,12 @@ public class UnitMovementStop : AwatableBase<AsyncExtensions.Void>
         public StopAwaiter(UnitMovementStop unitMovementStop)
         {
             _unitMovementStop = unitMovementStop;
-            _unitMovementStop.OnStop += onStop;
+            _unitMovementStop.OnStop += OnStop;
         }
 
-        private void onStop()
+        private void OnStop()
         {
-            _unitMovementStop.OnStop -= onStop;
+            _unitMovementStop.OnStop -= OnStop;
             _isCompleted = true;
             _continuation?.Invoke();
         }
