@@ -1979,6 +1979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431045866}
   - component: {fileID: 1431045865}
+  - component: {fileID: 1431045867}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -1998,6 +1999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e90319f3d033574c8ec80ef13598f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameStatus: {fileID: 1431045867}
 --- !u!4 &1431045866
 Transform:
   m_ObjectHideFlags: 0
@@ -2013,6 +2015,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431045867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431045864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3c175a424da054b96830de67396098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1470352589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3502,6 +3516,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909083318897513627, guid: dbeaf28f79ea7b74aadfe8ca7a009c52,
+        type: 3}
+      propertyPath: _TeamId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909083318897513627, guid: dbeaf28f79ea7b74aadfe8ca7a009c52,
+        type: 3}
+      propertyPath: _teamId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbeaf28f79ea7b74aadfe8ca7a009c52, type: 3}
