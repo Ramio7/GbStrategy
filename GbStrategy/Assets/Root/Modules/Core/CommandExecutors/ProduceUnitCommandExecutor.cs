@@ -25,15 +25,14 @@ namespace Assets.Root.Modules.Core.CommandExecutors
             {
                 return;
             }
+
             var innerTask = (UnitProductionTask)_queue[0];
             innerTask.TimeLeft -= Time.deltaTime;
+
             if (innerTask.TimeLeft <= 0)
             {
+                InstantiateUnit(_queue[0]);
                 RemoveTaskAtIndex(0);
-                var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
-                var queue = instance.GetComponent<ICommandsQueue>();
-                var mainBuilding = GetComponent<MainBuildingView>();
-                queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
             }
         }
 
@@ -51,6 +50,16 @@ namespace Assets.Root.Modules.Core.CommandExecutors
         public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
             _queue.Add(new UnitProductionTask(command.ProductionTime, command.Icon, command.UnitPrefab, command.UnitName));
+        }
+
+        private void InstantiateUnit(IUnitProductionTask unitProductionTask)
+        {
+            var instance = _diContainer.InstantiatePrefab(unitProductionTask.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
+            var queue = instance.GetComponent<ICommandsQueue>();
+            var mainBuilding = GetComponent<MainBuildingView>();
+            var teamMember = GetComponent<TeamSettings>();
+            teamMember.SetFaction(GetComponent<TeamSettings>().TeamId);
+            queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
         }
     }
 }

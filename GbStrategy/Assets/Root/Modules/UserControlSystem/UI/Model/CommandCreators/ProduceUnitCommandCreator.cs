@@ -17,6 +17,5 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators
             _diContainer.Inject(produceUnitCommand);
             creationCallback?.Invoke(produceUnitCommand);
         }
-
     }
 }

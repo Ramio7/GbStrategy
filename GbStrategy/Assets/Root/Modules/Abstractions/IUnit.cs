@@ -3,7 +3,7 @@ using Assets.Root.Modules.Abstractions;
 
 namespace Abstractions
 {
-    public interface IUnit : IVictim, ISelectable
+    public interface IUnit : IVictim, ISelectable, IDamageDealer
     {
         
     }

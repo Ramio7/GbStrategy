@@ -3354,6 +3354,7 @@ GameObject:
   - component: {fileID: -8276112450911099558}
   - component: {fileID: 8985657250993381943}
   - component: {fileID: 5165198664553446934}
+  - component: {fileID: 7909083318897513627}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -3422,10 +3423,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dd2914eef9d224ea97cd21de25132c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 20
-  _health: 20
+  _maxHealth: 100
+  _health: 100
   _icon: {fileID: 21300000, guid: a04ecc9d5e12d5d449077414eb86635e, type: 3}
   _highlighterScript: {fileID: 8909406201913643915}
+  _teamId: 0
+  _damage: 20
+  _animator: {fileID: 550902865843138712}
+  _stopCommandExecutor: {fileID: 3508110980120433558}
 --- !u!114 &8909406201913643915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20972,6 +20977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c472015db36ae24bae2311e6aac5264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 550902865843138712}
+  _stopCommandExecutor: {fileID: 3508110980120433558}
+  _attackingDistance: 5
+  _attackingPeriod: 1400
 --- !u!114 &613239942279603985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21127,3 +21136,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28bd51b5bbc76d44b130dd747075fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7909083318897513627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550902865850418010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e621bdf27d7253642af3254221dba210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _TeamId: 0

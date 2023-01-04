@@ -24,5 +24,18 @@ namespace Assets.Root.Modules.Core
         [SerializeField] private Sprite _icon;
         [SerializeField] private MonoBehaviour _highlighterScript;
         [SerializeField] private Vector3 _rallyPoint;
+
+        public void TakeDamage(int damage)
+        {
+            if (_health <= 0)
+            {
+                return;
+            }
+            _health -= damage;
+            if (_health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
