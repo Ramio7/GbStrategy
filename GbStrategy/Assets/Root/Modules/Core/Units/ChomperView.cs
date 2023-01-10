@@ -20,6 +20,8 @@ public class ChomperView : MonoBehaviour, IUnit
 
     public Transform ObjectPosition => _unitPosition;
 
+    public float VisionRange { get => _visionRange; }
+
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _health;
     [SerializeField] private Sprite _icon;
@@ -27,6 +29,7 @@ public class ChomperView : MonoBehaviour, IUnit
 
     [SerializeField] private int _teamId;
     [SerializeField] private int _damage;
+    [SerializeField] private float _visionRange;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private StopCommandExecutor _stopCommandExecutor;

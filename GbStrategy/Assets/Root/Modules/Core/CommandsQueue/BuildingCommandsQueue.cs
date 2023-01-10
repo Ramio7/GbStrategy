@@ -8,6 +8,7 @@ public class BuildingCommandsQueue : MonoBehaviour, ICommandsQueue
     [Inject] CommandExecutorBase<IProduceUnitCommand> _produceUnitCommandExecutor;
     [Inject] CommandExecutorBase<ISetRallyPointCommand> _setRallyPointCommandExecutor;
 
+    public ICommand CurrentCommand => default;
 
     public void Clear() { }
 

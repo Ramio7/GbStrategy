@@ -15,6 +15,8 @@ public class UnitCommandsQueue : MonoBehaviour, ICommandsQueue
 
     private ReactiveCollection<ICommand> _innerCollection = new();
 
+    public ICommand CurrentCommand => _innerCollection.Count > 0 ? _innerCollection[0] : default;
+
     [Inject]
     private void Init()
     {

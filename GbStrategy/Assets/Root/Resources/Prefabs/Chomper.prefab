@@ -3429,6 +3429,7 @@ MonoBehaviour:
   _highlighterScript: {fileID: 8909406201913643915}
   _teamId: 0
   _damage: 20
+  _visionRange: 8
   _animator: {fileID: 550902865843138712}
   _stopCommandExecutor: {fileID: 3508110980120433558}
 --- !u!114 &8909406201913643915
@@ -21149,4 +21150,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e621bdf27d7253642af3254221dba210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TeamId: 0
+  _teamId: 0
