@@ -12,12 +12,13 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
     public class MouseControlPresenter : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-        [SerializeField] private SelectableValue _selectedObject;
         [SerializeField] private EventSystem _eventSystem;
         [SerializeField] private Transform _groundTransform;
 
         [Inject] private Vector3Value _groundClicksRMB;
         [Inject] private VictimValue _victimRMB;
+        [Inject] private SelectableValue _selectedObject;
+        [Inject] private MouseControlModel _mouseControlModel;
 
         private Plane _groundPlane;
 
@@ -70,11 +71,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
                 return false;
             }
 
-            result = hits
-            .Select(hit =>
-            hit.collider.GetComponentInParent<T>())
-            .Where(c => c != null)
-            .FirstOrDefault();
+            result = hits.Select(hit => hit.collider.GetComponentInParent<T>()).FirstOrDefault(c => c != null);
             return result != default;
         }
     }

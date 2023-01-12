@@ -32,7 +32,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.View
                 { typeof(ICommandExecutor<IStopCommand>), _stopButton },
                 { typeof(ICommandExecutor<IProduceUnitCommand>), _produceUnitButton },
                 { typeof(ICommandExecutor<IHoldCommand>), _holdButton },
-                { typeof(ICommandExecutor<ISetRallyPointCommand>), _setRallyPointButton }
+                { typeof(ICommandExecutor<ISetRallyPointCommand>), _setRallyPointButton },
             };
         }
 
