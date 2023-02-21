@@ -25,7 +25,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
             Container.Bind<string>().WithId("Chomper").FromInstance("Chomper");
             Container.Bind<Sprite>().WithId("Chomper").FromInstance(_chomperSprite);
 
-            Container.Bind<CommandTableModel>().AsSingle();
+            Container.Bind<ControlSystemModel>().AsSingle();
             Container.Bind<ObjectStatusTableModel>().AsSingle();
         }
     }

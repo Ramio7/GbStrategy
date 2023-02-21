@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public class ProduceUnitCommand : Command, IProduceUnitCommand
+    public class ProduceUnitCommand : CommandBase, IProduceUnitCommand
     {
         [Inject(Id = "Chomper")] public string UnitName { get; }
         [Inject(Id = "Chomper")] public Sprite Icon { get; }

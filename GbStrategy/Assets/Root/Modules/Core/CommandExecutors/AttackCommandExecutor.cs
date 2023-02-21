@@ -23,9 +23,9 @@ public partial class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
     private Vector3 _ourPosition;
     private Vector3 _targetPosition;
     private Quaternion _ourRotation;
-    private readonly Subject<Vector3> _targetPositions = new Subject<Vector3>();
-    private readonly Subject<Quaternion> _targetRotations = new Subject<Quaternion>();
-    private readonly Subject<IVictim> _attackTargets = new Subject<IVictim>();
+    private readonly Subject<Vector3> _targetPositions = new();
+    private readonly Subject<Quaternion> _targetRotations = new();
+    private readonly Subject<IVictim> _attackTargets = new();
 
     private Transform _targetTransform;
     private AttackOperation _currentAttackOp;
@@ -34,55 +34,51 @@ public partial class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
     {
         public class AttackOperationAwaiter : AwaiterBase<AsyncExtensions.Void>
         {
-            private AttackOperation _attackOperation;
+            private readonly AttackOperation _attackOperation;
 
             public AttackOperationAwaiter(AttackOperation attackOperation)
             {
                 _attackOperation = attackOperation;
-                attackOperation.OnComplete += onComplete;
+                attackOperation.OnComplete += OnOperationComplete;
             }
 
-            private void onComplete()
+            private void OnOperationComplete()
             {
-                _attackOperation.OnComplete -= onComplete;
+                _attackOperation.OnComplete -= OnOperationComplete;
                 OnWaitFinish(new AsyncExtensions.Void());
             }
         }
 
         private event Action OnComplete;
-        private readonly AttackCommandExecutor _attackCommandExecutor;
+        private AttackCommandExecutor _attackCommandExecutor;
         private readonly IVictim _target;
         private bool _isCancelled;
+        private readonly Thread _attackThread;
+        private readonly MainThreadDispatcher _mainThreadDispatcher;
 
         public AttackOperation(AttackCommandExecutor attackCommandExecutor,
         IVictim target)
         {
             _target = target;
             _attackCommandExecutor = attackCommandExecutor;
-            var thread = new Thread(AttackAlgorythm);
-            thread.Start();
+            _attackThread = new Thread(AttackAlgorythm);
+            _attackThread.Start();
         }
 
         public void Cancel()
         {
             _isCancelled = true;
+            _attackThread.Interrupt();
             OnComplete?.Invoke();
         }
 
         private void AttackAlgorythm(object obj)
         {
-            while (true)
+            while (_attackCommandExecutor != null
+                || _attackCommandExecutor._ourHealth.Health > 0
+                || _target.Health > 0
+                || !_isCancelled)
             {
-                if (
-                _attackCommandExecutor == null
-                || _attackCommandExecutor._ourHealth.Health == 0
-                || _target.Health == 0
-                || _isCancelled
-                )
-                {
-                    OnComplete?.Invoke();
-                    return;
-                }
                 var targetPosition = default(Vector3);
                 var ourPosition = default(Vector3);
                 var ourRotation = default(Quaternion);
@@ -113,6 +109,8 @@ public partial class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
                     Thread.Sleep(_attackCommandExecutor._attackingPeriod);
                 }
             }
+
+            OnComplete?.Invoke();
         }
 
         public IAwaiter<AsyncExtensions.Void> GetAwaiter()

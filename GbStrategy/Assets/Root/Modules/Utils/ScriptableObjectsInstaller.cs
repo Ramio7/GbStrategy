@@ -1,7 +1,6 @@
 using Abstractions;
 using Abstractions.Assets.Root.Modules.Abstractions;
 using Assets.Root.Modules.Abstractions;
-using Assets.Root.Modules.UserControlSystem.UI.Model;
 using Assets.Root.Modules.Utils;
 using System;
 using UnityEngine;

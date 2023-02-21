@@ -3,7 +3,7 @@ using Assets.Root.Modules.Abstractions;
 
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public class AttackCommand : Command, IAttackCommand
+    public class AttackCommand : CommandBase, IAttackCommand
     {
         public IVictim Target { get; }
 

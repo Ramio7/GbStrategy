@@ -1,26 +1,19 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
-using Assets.Root.Modules.UserControlSystem.UI.Model;
 using Assets.Root.Modules.UserControlSystem.UI.View;
-using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
 {
-    public class CommandTablePresenter : MonoBehaviour
+    public sealed class CommandTablePresenter : CommandSystemPresenterBase
     {
-        [Inject] private IObservable<ISelectable> _selectable;
-        [Inject] private CommandTableModel _model;
-
         [SerializeField] private CommandTableView _view;
-
-        private ISelectable _currentSelectable;
 
         private void Start()
         {
             _view.OnClick += _model.OnCommandButtonClicked;
+
             _model.OnCommandSent += _view.UnblockAllInteractions;
             _model.OnCommandCancel += _view.UnblockAllInteractions;
             _model.OnCommandAccepted += _view.BlockInteractions;
@@ -28,7 +21,7 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Presenter
             _selectable.Subscribe(OnSelected);
         }
 
-        private void OnSelected(ISelectable selectable)
+        protected override void OnSelected(ISelectable selectable)
         {
             if (_currentSelectable == selectable)
             {

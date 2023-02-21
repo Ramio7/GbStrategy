@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Root.Modules.Core
 {
-    public abstract class CommandExecutorBase<T> : MonoBehaviour, ICommandExecutor<T> where T : class,ICommand
+    public abstract class CommandExecutorBase<T> : MonoBehaviour, ICommandExecutor<T> where T : class, ICommand
     {
         public async Task TryExecuteCommand(object command)
         {

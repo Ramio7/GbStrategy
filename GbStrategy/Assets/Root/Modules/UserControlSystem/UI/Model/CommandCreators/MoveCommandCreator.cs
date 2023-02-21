@@ -8,5 +8,4 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators
     {
         protected override IMoveCommand CreateCommand(Vector3 argument) => new MoveCommand(argument);
     }
-
 }

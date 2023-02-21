@@ -1,4 +1,5 @@
 using Abstractions.Assets.Root.Modules.Abstractions;
+using Assets.Root.Modules.Core.CommandExecutors;
 using Assets.Root.Modules.UserControlSystem.UI.Model.CommandCreators;
 using System;
 using UnityEngine;
@@ -6,7 +7,7 @@ using Zenject;
 
 namespace Assets.Root.Modules.UserControlSystem.UI.Model
 {
-    public class CommandTableModel
+    public class ControlSystemModel
     {
         public event Action<ICommandExecutor> OnCommandAccepted;
         public event Action OnCommandSent;
@@ -39,6 +40,17 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
             _rally.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
         }
 
+        public void OnRightMouseButtonClicked(ICommandExecutor commandExecutor, ICommandsQueue commandsQueue)
+        {
+            if (_commandIsPending)
+            {
+                return;
+            }
+
+            OnCommandAccepted?.Invoke(commandExecutor);
+            
+            _mover.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
+        }
 
         public void ExecuteCommandWrapper(object command, ICommandsQueue commandsQueue)
         {
@@ -50,7 +62,6 @@ namespace Assets.Root.Modules.UserControlSystem.UI.Model
             _commandIsPending = false;
             OnCommandSent?.Invoke();
         }
-
 
         public void OnSelectionChanged()
         {

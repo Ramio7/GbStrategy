@@ -1,6 +1,6 @@
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public class Command : ICommand
+    public abstract class CommandBase : ICommand
     {
 
     }

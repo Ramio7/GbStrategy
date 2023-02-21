@@ -57,7 +57,7 @@ public class ChomperView : MonoBehaviour, IUnit
     private async void KillUnit()
     {
         await _stopCommandExecutor.ExecuteSpecificCommand(new StopCommand());
-        _animator.SetTrigger("PlayDead");
+        _animator.SetTrigger("Dead");
         await Task.Delay(1000);
         Destroy(gameObject);
     }

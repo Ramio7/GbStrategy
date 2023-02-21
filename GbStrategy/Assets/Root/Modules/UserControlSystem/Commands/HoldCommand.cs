@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public class HoldCommand : Command, IHoldCommand
+    public class HoldCommand : CommandBase, IHoldCommand
     {
         public bool OnHold { get; set; }
 

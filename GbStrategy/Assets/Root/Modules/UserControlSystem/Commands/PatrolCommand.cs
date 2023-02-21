@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Root.Modules.UserControlSystem.Commands
 {
-    public class PatrolCommand : Command, IPatrolCommand
+    public class PatrolCommand : CommandBase, IPatrolCommand
     {
         public Vector3 Target { get; }
 
