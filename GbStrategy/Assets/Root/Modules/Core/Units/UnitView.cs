@@ -4,7 +4,7 @@ using Assets.Root.Modules.UserControlSystem.Commands;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ChomperView : MonoBehaviour, IUnit
+public class UnitView : MonoBehaviour, IUnit
 {
     public int TeamId => _teamId;
 
